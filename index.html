@@ -3,182 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚔️ The Citadel - Fortress Builder ⚔️</title>
-    <link rel="stylesheet" href="retro.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <title>The Citadel</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
-        <h1>⚔️ THE CITADEL ⚔️</h1>
-        <p class="blink">✨ Build your fortress of entertainment ✨</p>
+    <!-- Header -->
+    <header class="citadel-header">
+        <h1>THE CITADEL</h1>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <button class="nav-btn" onclick="openSection('tools')">🔧 Tools Section</button>
+            <button class="nav-btn" onclick="openSection('entertainment')">🎮 Entertainment Quarter</button>
+            <button class="nav-btn" onclick="openSection('map')">🗺️ Map Section</button>
+            <button class="nav-btn" onclick="openRadio()">📻 Radio</button>
+            <button class="nav-btn" onclick="openMusicPlaylist()">🎵 Music Playlist</button>
+            <button class="nav-btn" onclick="openGuide()">📖 Guide</button>
+            <button class="nav-btn" onclick="openChatroom()">💬 Public Chatroom</button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Tools Section -->
+            <section id="tools" class="content-section" style="display: none;">
+                <h2>Tools Section</h2>
+                <div class="tools-grid">
+                    <!-- ADD YOUR TOOLS HERE -->
+                    <div class="tool-card">
+                        <h3>Calculator</h3>
+                        <iframe src="https://www.online-calculator.com/full-screen-calculator/" width="100%" height="400px"></iframe>
+                    </div>
+                    <!-- Add more tools below by copying the tool-card div -->
+                </div>
+            </section>
+
+            <!-- Entertainment Quarter Section -->
+            <section id="entertainment" class="content-section" style="display: none;">
+                <h2>Entertainment Quarter</h2>
+                <div class="games-grid">
+                    <!-- ADD YOUR GAMES HERE -->
+                    <div class="game-card">
+                        <h3>Run 3</h3>
+                        <iframe src="https://run3.online/" width="100%" height="400px"></iframe>
+                    </div>
+                    <div class="game-card">
+                        <h3>Pac-Man</h3>
+                        <iframe src="https://pacman.platzh1rsch.ch/" width="100%" height="400px"></iframe>
+                    </div>
+                    <!-- Add more games below by copying the game-card div -->
+                </div>
+            </section>
+
+            <!-- Map Section -->
+            <section id="map" class="content-section" style="display: none;">
+                <h2>Map Section</h2>
+                <div class="map-container">
+                    <!-- ADD YOUR MAP HERE -->
+                    <p>Your fantasy map will go here</p>
+                    <!-- Example: <iframe src="your-map-url" width="100%" height="600px"></iframe> -->
+                </div>
+            </section>
+
+            <!-- Welcome Screen (shows first) -->
+            <div id="welcome" class="welcome-screen">
+                <h2>Welcome to The Citadel</h2>
+                <p>Select a section from the sidebar to begin</p>
+            </div>
+        </main>
     </div>
 
-    <div class="container">
-        <!-- Sidebar with draggable elements -->
-        <div class="sidebar">
-            <h2>🏰 Citadel Elements</h2>
-            
-            <div class="element-category">
-                <h3>📝 Text Elements</h3>
-                <div class="draggable-element" data-type="text">
-                    <span>📝 Text Box</span>
-                </div>
-                <div class="draggable-element" data-type="heading">
-                    <span>🎯 Heading</span>
-                </div>
-                <div class="draggable-element" data-type="marquee">
-                    <span>📜 Scrolling Text</span>
-                </div>
-            </div>
-
-            <div class="element-category">
-                <h3>🎮 Entertainment Quarter</h3>
-                <div class="draggable-element" data-type="game" data-game="run3">
-                    <span>🏃 Run 3</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="pacman">
-                    <span>👻 Pac-Man</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="doom">
-                    <span>🔫 Doom</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="tetris">
-                    <span>🧱 Tetris</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="2048">
-                    <span>🔢 2048</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="snake">
-                    <span>🐍 Snake</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="asteroids">
-                    <span>🚀 Asteroids</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="flappy">
-                    <span>🐦 Flappy Bird</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="invaders">
-                    <span>👾 Space Invaders</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="breakout">
-                    <span>⚾ Breakout</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="minesweeper">
-                    <span>💣 Minesweeper</span>
-                </div>
-                <div class="draggable-element" data-type="game" data-game="chess">
-                    <span>♟️ Chess</span>
-                </div>
-            </div>
-
-            <div class="element-category">
-                <h3>🎵 Music Chamber</h3>
-                <div class="draggable-element" data-type="musicplayer">
-                    <span>🎵 Music Player</span>
-                </div>
-            </div>
-
-            <div class="element-category">
-                <h3>💬 War Council</h3>
-                <div class="draggable-element" data-type="chatroom">
-                    <span>💬 Chatroom</span>
-                </div>
-            </div>
-
-            <div class="element-category">
-                <h3>🖼️ Images & GIFs</h3>
-                <div class="draggable-element" data-type="gif" data-src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif">
-                    <span>🔥 Fire GIF</span>
-                </div>
-                <div class="draggable-element" data-type="gif" data-src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif">
-                    <span>💫 Stars GIF</span>
-                </div>
-                <div class="draggable-element" data-type="construction">
-                    <span>🚧 Under Construction</span>
-                </div>
-            </div>
-
-            <div class="element-category">
-                <h3>🎪 Interactive</h3>
-                <div class="draggable-element" data-type="guestbook">
-                    <span>📖 Guestbook</span>
-                </div>
-                <div class="draggable-element" data-type="counter">
-                    <span>🔢 Visitor Counter</span>
-                </div>
-            </div>
-
-            <div class="customize-panel">
-                <h3>🎨 Style Selected</h3>
-                <label>Font:
-                    <select onchange="changeFont(this.value)">
-                        <option value="Orbitron">Orbitron</option>
-                        <option value="Cinzel">Cinzel</option>
-                        <option value="Courier New">Courier</option>
-                        <option value="Times New Roman">Times</option>
-                    </select>
-                </label><br><br>
-                <label>Color:
-                    <input type="color" onchange="changeColor(this.value)">
-                </label><br><br>
-
-                <h3>🖼️ Upload Image</h3>
-                <input type="file" accept="image/*" onchange="uploadImage(event)">
-            </div>
-
-            <button onclick="searchGiphy(document.getElementById('giphyQuery').value)">🔍 GIF</button>
-            <input type="text" id="giphyQuery" placeholder="Search GIFs">
-
-            <div class="theme-selector">
-                <h3>🎨 Themes</h3>
-                <button onclick="changeTheme('neon')" class="theme-btn">🌈 Neon</button>
-                <button onclick="changeTheme('classic')" class="theme-btn">🏛️ Classic</button>
-                <button onclick="changeTheme('dark')" class="theme-btn">🌙 Dark</button>
-            </div>
-
-            <div class="export-section">
-                <button onclick="exportSite()" class="export-btn">
-                    💾 Export Citadel!
-                </button>
-                <button onclick="previewSite()" class="preview-btn">
-                    👀 Preview Site
-                </button>
-                <button onclick="exportScreenshot()">📸 Screenshot</button>
-            </div>
-        </div>
-
-        <!-- Canvas area -->
-        <div class="canvas-container">
-            <div class="canvas-header">
-                <h3>🏰 Your Citadel Canvas</h3>
-                <button onclick="clearCanvas()" class="clear-btn">🗑️ Clear All</button>
-            </div>
-            <div id="canvas" class="canvas">
-                <div class="welcome-message">
-                    <h2>Welcome to The Citadel!</h2>
-                    <p>Drag elements from the sidebar to start building! ⚔️</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="ai-assistant">
-        <h3>🤖 AI Assistant</h3>
-        <input type="text" id="aiPrompt" placeholder="e.g., Add Pac-Man game and music player" />
-        <button onclick="handleAIPrompt()">✨ Generate</button>
-        <p id="aiResponse" class="ai-response blink"></p>
-    </div>
-
-    <!-- Preview Modal -->
-    <div id="previewModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closePreview()">&times;</span>
-            <h2>🔍 Preview Your Citadel</h2>
-            <iframe id="previewFrame" src="about:blank"></iframe>
-        </div>
-    </div>
-
-    <script src="main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
