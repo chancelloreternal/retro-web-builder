@@ -15,62 +15,68 @@
     <div class="main-container">
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
-            <button class="nav-btn" onclick="openSection('tools')">🔧 Tools Section</button>
-            <button class="nav-btn" onclick="openSection('entertainment')">🎮 Entertainment Quarter</button>
-            <button class="nav-btn" onclick="openSection('map')">🗺️ Map Section</button>
             <button class="nav-btn" onclick="openRadio()">📻 Radio</button>
             <button class="nav-btn" onclick="openMusicPlaylist()">🎵 Music Playlist</button>
             <button class="nav-btn" onclick="openGuide()">📖 Guide</button>
             <button class="nav-btn" onclick="openChatroom()">💬 Public Chatroom</button>
         </aside>
 
-        <!-- Main Content Area -->
+        <!-- Main Content Area with 3 Sections -->
         <main class="content-area">
             <!-- Tools Section -->
-            <section id="tools" class="content-section" style="display: none;">
-                <h2>Tools Section</h2>
-                <div class="tools-grid">
-                    <!-- ADD YOUR TOOLS HERE -->
-                    <div class="tool-card">
-                        <h3>Calculator</h3>
-                        <iframe src="https://www.online-calculator.com/full-screen-calculator/" width="100%" height="400px"></iframe>
+            <section class="expandable-section" id="tools-section">
+                <div class="section-header" onclick="toggleSection('tools-section')">
+                    <h2>Tools Section</h2>
+                    <button class="expand-btn">click to expand</button>
+                </div>
+                <div class="section-content">
+                    <div class="tools-grid">
+                        <!-- ADD YOUR TOOLS HERE -->
+                        <div class="tool-card">
+                            <h3>Calculator</h3>
+                            <iframe src="https://www.online-calculator.com/full-screen-calculator/" width="100%" height="400px"></iframe>
+                        </div>
+                        <!-- Copy the tool-card div above to add more tools -->
                     </div>
-                    <!-- Add more tools below by copying the tool-card div -->
                 </div>
             </section>
 
             <!-- Entertainment Quarter Section -->
-            <section id="entertainment" class="content-section" style="display: none;">
-                <h2>Entertainment Quarter</h2>
-                <div class="games-grid">
-                    <!-- ADD YOUR GAMES HERE -->
-                    <div class="game-card">
-                        <h3>Run 3</h3>
-                        <iframe src="https://run3.online/" width="100%" height="400px"></iframe>
+            <section class="expandable-section" id="entertainment-section">
+                <div class="section-header" onclick="toggleSection('entertainment-section')">
+                    <h2>Entertainment Quarter Section</h2>
+                    <button class="expand-btn">click to expand</button>
+                </div>
+                <div class="section-content">
+                    <div class="games-grid">
+                        <!-- ADD YOUR GAMES HERE -->
+                        <div class="game-card">
+                            <h3>Run 3</h3>
+                            <iframe src="https://run3.online/" width="100%" height="400px"></iframe>
+                        </div>
+                        <div class="game-card">
+                            <h3>Pac-Man</h3>
+                            <iframe src="https://pacman.platzh1rsch.ch/" width="100%" height="400px"></iframe>
+                        </div>
+                        <!-- Copy the game-card div above to add more games -->
                     </div>
-                    <div class="game-card">
-                        <h3>Pac-Man</h3>
-                        <iframe src="https://pacman.platzh1rsch.ch/" width="100%" height="400px"></iframe>
-                    </div>
-                    <!-- Add more games below by copying the game-card div -->
                 </div>
             </section>
 
             <!-- Map Section -->
-            <section id="map" class="content-section" style="display: none;">
-                <h2>Map Section</h2>
-                <div class="map-container">
-                    <!-- ADD YOUR MAP HERE -->
-                    <p>Your fantasy map will go here</p>
-                    <!-- Example: <iframe src="your-map-url" width="100%" height="600px"></iframe> -->
+            <section class="expandable-section" id="map-section">
+                <div class="section-header" onclick="toggleSection('map-section')">
+                    <h2>Map Section</h2>
+                    <button class="expand-btn">click to expand</button>
+                </div>
+                <div class="section-content">
+                    <div class="map-container">
+                        <!-- ADD YOUR MAP HERE -->
+                        <p>Your fantasy map will go here</p>
+                        <!-- Example: <iframe src="your-map-url" width="100%" height="600px"></iframe> -->
+                    </div>
                 </div>
             </section>
-
-            <!-- Welcome Screen (shows first) -->
-            <div id="welcome" class="welcome-screen">
-                <h2>Welcome to The Citadel</h2>
-                <p>Select a section from the sidebar to begin</p>
-            </div>
         </main>
     </div>
 
