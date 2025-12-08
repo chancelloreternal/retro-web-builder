@@ -3,81 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Citadel</title>
+    <title>Citadel - Digital Metropolis</title>
     <link rel="stylesheet" href="retro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="citadel-header">
-        <h1>THE CITADEL</h1>
-    </header>
+    <div class="app-container">
+        <!-- Left Navigation -->
+        <nav class="side-nav">
+            <div class="nav-header">
+                <h1>CITADEL</h1>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" data-section="radio">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <span>Radio</span>
+                </li>
+                <li class="nav-item" data-section="music">
+                    <i class="fas fa-music"></i>
+                    <span>Music</span>
+                </li>
+                <li class="nav-item" data-section="guide">
+                    <i class="fas fa-book"></i>
+                    <span>Guide</span>
+                </li>
+                <li class="nav-item" data-section="chat">
+                    <i class="fas fa-comments"></i>
+                    <span>Public Chat</span>
+                </li>
+            </ul>
+        </nav>
 
-    <div class="main-container">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <button class="nav-btn" onclick="openRadio()">📻 Radio</button>
-            <button class="nav-btn" onclick="openMusicPlaylist()">🎵 Music Playlist</button>
-            <button class="nav-btn" onclick="openGuide()">📖 Guide</button>
-            <button class="nav-btn" onclick="openChatroom()">💬 Public Chatroom</button>
-        </aside>
-
-        <!-- Main Content Area with 3 Sections -->
-        <main class="content-area">
-            <!-- Tools Section -->
-            <section class="expandable-section" id="tools-section">
-                <div class="section-header" onclick="toggleSection('tools-section')">
-                    <h2>Tools Section</h2>
-                    <button class="expand-btn">click to expand</button>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Section -->
+            <section class="tools-section content-panel">
+                <div class="panel-header">
+                    <h2>Tools</h2>
+                    <button class="expand-btn" data-panel="tools">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
-                <div class="section-content">
-                    <div class="tools-grid">
-                        <!-- ADD YOUR TOOLS HERE -->
-                        <div class="tool-card">
-                            <h3>Calculator</h3>
-                            <iframe src="https://www.online-calculator.com/full-screen-calculator/" width="100%" height="400px"></iframe>
-                        </div>
-                        <!-- Copy the tool-card div above to add more tools -->
-                    </div>
+                <div class="panel-content">
+                    <p>Tools content goes here...</p>
                 </div>
             </section>
 
-            <!-- Entertainment Quarter Section -->
-            <section class="expandable-section" id="entertainment-section">
-                <div class="section-header" onclick="toggleSection('entertainment-section')">
-                    <h2>Entertainment Quarter Section</h2>
-                    <button class="expand-btn">click to expand</button>
+            <!-- Middle Section -->
+            <section class="map-section content-panel">
+                <div class="panel-header">
+                    <h2>Map</h2>
+                    <button class="expand-btn" data-panel="map">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
-                <div class="section-content">
-                    <div class="games-grid">
-                        <!-- ADD YOUR GAMES HERE -->
-                        <div class="game-card">
-                            <h3>Run 3</h3>
-                            <iframe src="https://run3.online/" width="100%" height="400px"></iframe>
-                        </div>
-                        <div class="game-card">
-                            <h3>Pac-Man</h3>
-                            <iframe src="https://pacman.platzh1rsch.ch/" width="100%" height="400px"></iframe>
-                        </div>
-                        <!-- Copy the game-card div above to add more games -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- Map Section -->
-            <section class="expandable-section" id="map-section">
-                <div class="section-header" onclick="toggleSection('map-section')">
-                    <h2>Map Section</h2>
-                    <button class="expand-btn">click to expand</button>
-                </div>
-                <div class="section-content">
-                    <div class="map-container">
-                        <!-- ADD YOUR MAP HERE -->
-                        <p>Your fantasy map will go here</p>
-                        <!-- Example: <iframe src="your-map-url" width="100%" height="600px"></iframe> -->
-                    </div>
+                <div class="panel-content">
+                    <p>Map content goes here...</p>
                 </div>
             </section>
         </main>
+
+        <!-- Right Sidebar -->
+        <aside class="entertainment-quarter content-panel">
+            <div class="panel-header">
+                <button class="expand-btn" data-panel="entertainment">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2>Entertainment Quarter</h2>
+            </div>
+            <div class="panel-content">
+                <div class="games-grid">
+                    <div class="game-card" data-game="pacman">
+                        <i class="fas fa-ghost"></i>
+                        <h3>Pac-Man</h3>
+                    </div>
+                    <div class="game-card" data-game="tetris">
+                        <i class="fas fa-th"></i>
+                        <h3>Tetris</h3>
+                    </div>
+                    <div class="game-card coming-soon">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>More Games</h3>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Chat Modal -->
+    <div id="chat-modal" class="modal">
+        <div class="modal-content">
+            <div class="chat-header">
+                <h3>Public Chatroom</h3>
+                <span class="close-chat">&times;</span>
+            </div>
+            <div id="chat-messages" class="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="message-input" placeholder="Type your message...">
+                <button id="send-message" class="btn">Send</button>
+            </div>
+        </div>
     </div>
 
     <script src="main.js"></script>
