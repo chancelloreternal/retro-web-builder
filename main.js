@@ -9,7 +9,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const messageInput = document.getElementById('message-input');
     const chatMessages = document.getElementById('chat-messages');
     const gameCards = document.querySelectorAll('.game-card:not(.coming-soon)');
+// Game loader functions
+function loadPacman(container) {
+    const iframe = document.createElement('iframe');
+    iframe.src = 'games/pacman/index.html';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    container.appendChild(iframe);
+}
 
+function loadTetris(container) {
+    const iframe = document.createElement('iframe');
+    iframe.src = 'games/tetris/index.html';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    container.appendChild(iframe);
+}
+
+function load2048(container) {
+    const iframe = document.createElement('iframe');
+    iframe.src = '2048/index.html';  // Update this path if needed
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    container.appendChild(iframe);
+}
     // Initialize
     initChat();
     setupEventListeners();
@@ -100,33 +126,57 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function handleGameCardClick() {
-        const game = this.dataset.game;
-        const gameTitle = this.querySelector('h3').textContent;
-        
-        // Create game iframe
-        const gameContainer = document.createElement('div');
-        gameContainer.className = 'game-fullscreen';
-        gameContainer.innerHTML = `
-            <div class="game-header">
-                <h2>${gameTitle}</h2>
-                <button class="btn close-game">Close</button>
-            </div>
-            <div class="game-frame">
-                <p>Loading ${gameTitle}...</p>
-                <p class="small">(In a real implementation, this would load the actual game)</p>
-            </div>
-        `;
-        
-        document.body.appendChild(gameContainer);
-        
-        // Add close button functionality
-        const closeBtn = gameContainer.querySelector('.close-game');
-        closeBtn.addEventListener('click', () => {
-            document.body.removeChild(gameContainer);
-        });
+function handleGameCardClick() {
+    const game = this.dataset.game;
+    const gameTitle = this.querySelector('h3').textContent;
+    
+    // Set game title
+    document.getElementById('game-title').textContent = gameTitle;
+    
+    // Get the game modal and frame
+    const gameModal = document.getElementById('game-modal');
+    const gameFrame = document.getElementById('game-frame');
+    
+    // Clear previous game
+    gameFrame.innerHTML = '';
+    
+    // Load the appropriate game
+    switch(game) {
+        case 'pacman':
+            loadPacman(gameFrame);
+            break;
+        case 'tetris':
+            loadTetris(gameFrame);
+            break;
+        case '2048':
+            load2048(gameFrame);
+            break;
+        default:
+            gameFrame.innerHTML = `
+                <div class="game-placeholder">
+                    <p>Game loading...</p>
+                    <p class="small">(Game not implemented yet: ${gameTitle})</p>
+                </div>
+            `;
     }
-
+    
+    // Show the modal
+    gameModal.style.display = 'block';
+    
+    // Close button
+    const closeBtn = gameModal.querySelector('.close-game');
+    closeBtn.onclick = () => {
+        gameModal.style.display = 'none';
+    };
+    
+    // Close when clicking outside
+    window.onclick = (event) => {
+        if (event.target === gameModal) {
+            gameModal.style.display = 'none';
+        }
+    };
+}
+        document.body.appendChild(gameContainer);
     // Add some retro console logging for fun
     console.log('%c CITADEL v1.0', 'color: #ffd700; font-size: 2em; font-weight: bold;');
     console.log('%c Welcome to the Digital Metropolis', 'color: #e0e0e0;');
