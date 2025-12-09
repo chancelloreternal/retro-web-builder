@@ -30,7 +30,7 @@ function loadTetris(container) {
 
 function load2048(container) {
     const iframe = document.createElement('iframe');
-    iframe.src = '2048/index.html';  // Update this path if needed
+    iframe.src = 'games/2048/index.html';  // Update this path if needed
     iframe.style.width = '100%';
     iframe.style.height = '100%';
     iframe.style.border = 'none';
