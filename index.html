@@ -3,116 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citadel - Digital Metropolis</title>
-    <link rel="stylesheet" href="retro.css">
+    <title>Citadel - Your Digital Metropolis</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="retro.css">
 </head>
 <body>
     <div class="app-container">
-        <!-- Left Navigation -->
+        <!-- ===== LEFT NAVIGATION ===== -->
         <nav class="side-nav">
-            <div class="nav-header">
-                <h1>CITADEL</h1>
-            </div>
-            <ul class="nav-links">
-                <li class="nav-item active" data-section="radio">
-                    <i class="fas fa-broadcast-tower"></i>
-                    <span>Radio</span>
-                </li>
-                <li class="nav-item" data-section="music">
-                    <i class="fas fa-music"></i>
-                    <span>Music</span>
-                </li>
-                <li class="nav-item" data-section="guide">
-                    <i class="fas fa-book"></i>
-                    <span>Guide</span>
-                </li>
-                <li class="nav-item" data-section="chat">
-                    <i class="fas fa-comments"></i>
-                    <span>Public Chat</span>
-                </li>
+            <div class="logo">CITADEL</div>
+            <ul>
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#map"><i class="fas fa-map"></i> Map</a></li>
+                <li><a href="#entertainment"><i class="fas fa-gamepad"></i> Entertainment</a></li>
+                <li><a href="#chat"><i class="fas fa-comments"></i> City Hall</a></li>
+                <li><a href="#music"><i class="fas fa-music"></i> Music</a></li>
             </ul>
         </nav>
 
-        <!-- Main Content -->
+        <!-- ===== MAIN CONTENT AREA ===== -->
         <main class="main-content">
-            <!-- Top Section -->
-            <section class="tools-section content-panel">
-                <div class="panel-header">
-                    <h2>Tools</h2>
-                    <button class="expand-btn" data-panel="tools">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-                <div class="panel-content">
-                    <p>Tools content goes here...</p>
-                </div>
+            <section id="home" class="content-section">
+                <h1>Welcome to Citadel</h1>
+                <p>Your digital metropolis awaits...</p>
             </section>
-
-            <!-- Middle Section -->
-            <section class="map-section content-panel">
-                <div class="panel-header">
-                    <h2>Map</h2>
-                    <button class="expand-btn" data-panel="map">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-                <div class="panel-content">
-                    <p>Map content goes here...</p>
-                </div>
+            
+            <section id="map" class="content-section" style="display: none;">
+                <h2>City Map</h2>
+                <p>Map content will go here...</p>
             </section>
         </main>
 
-        <!-- Right Sidebar -->
-        <aside class="entertainment-quarter content-panel">
+        <!-- ===== ENTERTAINMENT QUARTER (RIGHT SIDEBAR) ===== -->
+        <aside class="entertainment-quarter">
             <div class="panel-header">
-                <button class="expand-btn" data-panel="entertainment">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <h2>Entertainment Quarter</h2>
+                <h3>Entertainment Quarter</h3>
+                <button class="toggle-panel">-</button>
             </div>
-            <div class="panel-content">
-                <div class="games-grid">
-                    <div class="game-card" data-game="pacman">
+            <div class="games-grid">
+                <!-- 
+                    ===== HOW TO ADD A NEW GAME =====
+                    1. Create a folder in /games/ (e.g., /games/2048/)
+                    2. Add your game files there
+                    3. Add a game card below like this:
+                -->
+                <div class="game-card" data-game="2048" data-type="game">
+                    <i class="fas fa-superscript"></i>
+                    <h3>2048</h3>
+                </div>
+                <!-- 
+                    Example for another game:
+                    <div class="game-card" data-game="pacman" data-type="game">
                         <i class="fas fa-ghost"></i>
                         <h3>Pac-Man</h3>
                     </div>
-                    <div class="game-card" data-game="2048" data-type="game">
-    <i class="fas fa-superscript"></i>
-    <h3>2048</h3>
-</div>
-                    <div class="game-card coming-soon">
-                        <i class="fas fa-gamepad"></i>
-                        <h3>More Games</h3>
-                    </div>
-                </div>
+                -->
             </div>
         </aside>
     </div>
-<div id="game-modal" class="modal">
-    <div class="modal-content">
-        <div class="game-header">
-            <h3 id="game-title">Game Title</h3>
-            <button class="close-game">&times;</button>
-        </div>
-        <div id="game-frame" style="width: 100%; height: 80vh;"></div>
-    </div>
-</div>
-    <!-- Chat Modal -->
-    <div id="chat-modal" class="modal">
+
+    <!-- ===== GAME MODAL ===== -->
+    <!-- This is where games will be displayed when clicked -->
+    <div id="game-modal" class="modal">
         <div class="modal-content">
-            <div class="chat-header">
-                <h3>Public Chatroom</h3>
-                <span class="close-chat">&times;</span>
+            <div class="game-header">
+                <h3 id="game-title">Game Title</h3>
+                <button class="close-game">&times;</button>
             </div>
-            <div id="chat-messages" class="chat-messages"></div>
-            <div class="chat-input-container">
-                <input type="text" id="message-input" placeholder="Type your message...">
-                <button id="send-message" class="btn">Send</button>
-            </div>
+            <div id="game-frame"></div>
         </div>
     </div>
 
+    <!-- ===== MAIN JAVASCRIPT ===== -->
     <script src="main.js"></script>
 </body>
 </html>
